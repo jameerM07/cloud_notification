@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Cloud Notification System</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="logo">☁️</div>
+
+        <h1>Create Account</h1>
+        <p class="subtitle">Join our Cloud Notification System</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('register') }}" method="POST">
+
+            <label for="email">Gmail Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your Gmail address"
+                required
+            >
+
+            <label for="password">Create Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                minlength="8"
+                required
+            >
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p class="register-link">
+            Already have an account?
+            <a href="{{ url_for('login') }}">Login Here</a>
+        </p>
+    </div>
+
+</body>
+</html>
